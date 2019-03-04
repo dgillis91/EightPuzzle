@@ -5,14 +5,12 @@ from GameState import GameState
 
 class GameStateRandomizer:
     def __init__(self, cost_function):
-        self._generate_solvable_state()
         self.cost_function = cost_function
-        self._game_state = None
+        self._generate_solvable_state()
+        self._game_state = GameState(self._state, self.cost_function)
         
     @property
     def state(self):
-        if self._game_state == None:
-            self._game_state = GameState(self._state, self.cost_function)
         return self._game_state
     
     def _generate_solvable_state(self):
