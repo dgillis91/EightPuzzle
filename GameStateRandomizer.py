@@ -20,15 +20,14 @@ class GameStateRandomizer:
             shuffle(self._state)
     
     def _is_solvable(self):
-        def inversion_count(arr): 
+        def inversion_count(array):
             inv_count = 0
-            l = len(arr)
-            for i in range(l): 
-                for j in range(i + 1, l): 
-                    if (arr[i] > 0 and arr[j] > 0 and arr[i] > arr[j]): 
+            array_len = len(array)
+            for i in range(array_len):
+                for j in range(i + 1, array_len):
+                    if (array[i] > 0 and array[j] and array[i] > array[j]):
                         inv_count += 1
-            return inv_count 
-        is_even = (
-            lambda x: (x % 2) == 0
-        )
+            return inv_count
+        def is_even(number):
+            return (number % 2) == 0
         return is_even(inversion_count(self._state))
